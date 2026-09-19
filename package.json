@@ -1,7 +1,7 @@
 {
   "name": "fmode-image",
-  "version": "1.0.0",
-  "description": "Fmode Image Generator: 架构图和场景插图生成器。自动读取API Key，支持AI架构图(1792x1024)和场景插图(1024x1024)双模式，纯白底PNG直接用于PPT。",
+  "version": "2.0.0",
+  "description": "Fmode Image Generator: \u67b6\u6784\u56fe\u548c\u573a\u666f\u63d2\u56fe\u751f\u6210\u5668\u3002\u81ea\u52a8\u8bfb\u53d6API Key\uff0c\u652f\u6301AI\u67b6\u6784\u56fe(1792x1024)\u548c\u573a\u666f\u63d2\u56fe(1024x1024)\u53cc\u6a21\u5f0f\uff0c\u7eaf\u767d\u5e95PNG\u76f4\u63a5\u7528\u4e8ePPT\u3002",
   "type": "commonjs",
   "bin": {
     "fmode-image": "bin/fmode-image.js"

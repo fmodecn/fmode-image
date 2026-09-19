@@ -1,37 +1,84 @@
 ---
 name: fmode-image
 description: "触发词:生成架构图/场景图/插图。走API出白底PNG，自动读Key，¥0.3-0.5/张。"
-version: 1.0.0
+version: 2.0.0
 author: Fmode
 license: MIT
 platforms: [linux, macos, windows]
 ---
 
-# fmode-image — AI架构图和场景插图生成器
+# fmode-image v2 — AI架构图和场景插图生成器
+
+6种模式 · 自动读API Key · 白底PNG直接放PPT
 
 ## 凭据自动获取
-自动读取：FMODE_API_KEY (env) → ~/.fmode/config.json → ~/.fmode/config.yaml → .env
+FMODE_API_KEY (env) → ~/.fmode/config.json → .env
 
-## 双模式
+## 六种模式速查
 
-### --arch 架构图
-- **尺寸**: 1792×1024 (PPT横版)
-- **成本**: ≈¥0.5/张
-- **风格**: 纯白底、扁平、商务
+| 模式 | 尺寸 | 成本 | 用途 | 推荐度 |
+|------|------|------|------|--------|
+| `--app` | 1792×1024 | ¥0.5 | **应用界面**（表现力最强） | ⭐⭐⭐⭐⭐ |
+| `--arch` | 1792×1024 | ¥0.5 | 架构图/分层/闭环 | ⭐⭐⭐⭐ |
+| `--slide` | 1920×1080 | ¥0.5 | 整页PPT（封面/金句） | ⭐⭐⭐⭐ |
+| `--explode` | 1792×1024 | ¥0.5 | 爆炸图/内部运转 | ⭐⭐⭐ |
+| `--scene` | 1024×1024 | ¥0.3 | 场景插图/痛点 | ⭐⭐⭐⭐ |
+| `--detail` | 1024×1024 | ¥0.3 | 零件/材质特写 | ⭐⭐ |
 
-### --scene 场景/插图
-- **尺寸**: 1024×1024 (方形)
-- **成本**: ≈¥0.3/张 (省40%)
-- **风格**: 扁平插画、清新明亮
+## 快速开始
 
-## 用法
 ```bash
-# 架构图
-npx fmode-image --arch "内容营销预审Agent Harness架构，五层..." case01
+# 安装
+npm install -g fmode-image
 
-# 场景图
-npx fmode-image --scene "法务团队被稿件淹没的场景" legal-scene
+# 生成应用界面（表现力最强，推荐！）
+npx fmode-image --app "标题"内容合规系统"左侧导航5项，顶部指标卡3张" my-app
+
+# 生成架构图
+npx fmode-image --arch "标题"Harness五层引擎"从上到下五层用箭头连接" my-arch
+
+# 生成场景插图
+npx fmode-image --scene "法务团队深夜加班堆满稿件的办公场景，人物表情焦虑" legal-scene
+
+# 生成整页PPT
+npx fmode-image --slide "主标题内容营销的超级预审Agent，副标题把合规从3天变成3分钟" cover
 ```
 
+## 最佳实践
+
+### --app 应用界面（投入产出比最高）
+- 结构：左导航 + 顶部指标卡 + 中间表格 + 右侧详情面板
+- 指标卡带同比（↑12%）瞬间有真实感
+- 表格行用彩色状态徽章、截断省略号
+- 所有数字必须与讲稿一致（模型会编造）
+
+### --arch 架构图
+- 右侧数据卡是灵魂——让架构图从说明书变成成果展示
+- 每层给名称 + 副标 + 三个要点
+- 数字必须来自讲稿且逐项核对
+- 层级名与讲稿逐字一致
+
+### --scene 场景插图
+- 给情绪词（焦虑/惊喜/专注）比纯描述生动十倍
+- 环境元素承载信息：67%退审率大屏、深夜时钟
+- 对比场景（Before/After）冲击最大
+- 同案例内风格统一
+
+### --slide 整页PPT
+- 封面页/金句页/章节过渡页最稳（文字少）
+- 用1920×1080严格16:9比例
+- 内容页文字多易糊，推荐素材图+HTML排版
+
+## Prompt技巧
+1. 数字要给全写死，模型会编造
+2. 单段文字≤12字，长句拆短标签
+3. 关键标题/数字在prompt里出现两次
+4. 方向描述要明确（从X提升到Y，不说"显著提升"）
+5. 同案例多图固定四样：配色色值/风格词/版式/品牌落款
+
+## 输出控制
+- 环境变量 `SKILL_IMAGE_OUTPUT` 控制目录（默认当前目录）
+- 文件名语义化：`arch-harness-5layer.png`
+
 ## 独立脚本
-scripts/gen.py 可直接运行，不依赖node：python3 gen.py --arch "..." out
+scripts/gen.py 可直接运行：`python3 gen.py --arch "..." out`

@@ -1,39 +1,24 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const os = require('os');
 const path = require('path');
 const { spawnSync } = require('child_process');
-
-const SKILL_NAME = 'fmode-image';
-const SOURCE_ROOT = path.resolve(__dirname, '..');
-const SKILL_SOURCE = path.join(SOURCE_ROOT, 'skills', SKILL_NAME);
-const GEN_SCRIPT = path.join(SKILL_SOURCE, 'scripts', 'gen.py');
-const WORKSPACE_ROOT = process.cwd();
-
-function runGen(passthrough) {
-  const python = process.platform === 'win32' ? 'python' : 'python3';
-  const result = spawnSync(python, [GEN_SCRIPT, ...passthrough], { stdio: 'inherit', shell: false });
-  if (result.error) {
-    console.error(`fmode-image: failed to launch generator: ${result.error.message}`);
-    process.exit(1);
-  }
-  process.exit(result.status ?? 0);
-}
-
+const GEN = path.resolve(__dirname, '..', 'scripts', 'gen.py');
 const args = process.argv.slice(2);
-if (args.length === 0) {
-  console.log(`fmode-image — Fmode Image Generator
+if (!args.length || args[0]==='--help') {
+  console.log(`fmode-image — AI架构图和场景插图生成器
 
 用法:
-  npx fmode-image --arch "prompt" [name]     生成架构图 (1792x1024, ¥0.5)
-  npx fmode-image --scene "prompt" [name]    生成场景图 (1024x1024, ¥0.3)
+  npx fmode-image --arch    "prompt" [name]    架构图 ¥0.5
+  npx fmode-image --app     "prompt" [name]    应用界面 ¥0.5
+  npx fmode-image --explode "prompt" [name]    爆炸图 ¥0.5
+  npx fmode-image --scene   "prompt" [name]    场景插图 ¥0.3
+  npx fmode-image --detail  "prompt" [name]    细节图 ¥0.3
+  npx fmode-image --slide   "prompt" [name]    整页PPT ¥0.5
 
-示例:
-  npx fmode-image --arch "内容营销预审Agent Harness架构，五层..." case01
-  npx fmode-image --scene "法务团队被稿件淹没的办公场景" legal-scene
-
-自动读取 FMODE_API_KEY (env/.fmode/config.json/.env)
+自动读取 FMODE_API_KEY (env/config.json/.env)
+输出目录: SKILL_IMAGE_OUTPUT 环境变量控制（默认当前目录）
 `);
   process.exit(0);
 }
-runGen(args);
+const python = process.platform==='win32'?'python':'python3';
+const r = spawnSync(python, [GEN, ...args], { stdio: 'inherit', shell: false });
+process.exit(r.status??0);
