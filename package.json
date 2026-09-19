@@ -1,29 +1,38 @@
 {
   "name": "fmode-image",
   "version": "2.0.0",
-  "description": "Fmode Image Generator: \u67b6\u6784\u56fe\u548c\u573a\u666f\u63d2\u56fe\u751f\u6210\u5668\u3002\u81ea\u52a8\u8bfb\u53d6API Key\uff0c\u652f\u6301AI\u67b6\u6784\u56fe(1792x1024)\u548c\u573a\u666f\u63d2\u56fe(1024x1024)\u53cc\u6a21\u5f0f\uff0c\u7eaf\u767d\u5e95PNG\u76f4\u63a5\u7528\u4e8ePPT\u3002",
-  "type": "commonjs",
+  "description": "AI架构图和场景插图生成器。6种模式(--app/--arch/--scene/--slide)，自动读API Key，零依赖纯ESM。",
+  "type": "module",
+  "main": "./lib/fmode-image.mjs",
+  "exports": {
+    ".": {
+      "import": "./lib/fmode-image.mjs",
+      "default": "./lib/fmode-image.mjs"
+    }
+  },
   "bin": {
-    "fmode-image": "bin/fmode-image.js"
+    "fmode-image": "./bin/fmode-image.mjs"
   },
   "files": [
-    ".claude-plugin/",
+    "lib/",
     "bin/",
+    "skills/",
     "scripts/",
     "README.md",
-    "skill-package-manifest.json",
-    "skills/"
+    "LICENSE",
+    "skill-package-manifest.json"
   ],
-  "keywords": [
-    "claude-code",
-    "claude-skill",
-    "fmode",
-    "image",
-    "architecture",
-    "diagram",
-    "illustration",
-    "harness",
-    "ppt"
-  ],
-  "license": "MIT"
+  "keywords": ["fmode", "image", "ai", "architecture", "diagram", "scene", "presentation"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmodecn/fmode-image.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fmodecn/fmode-image/issues"
+  },
+  "homepage": "https://github.com/fmodecn/fmode-image#readme",
+  "engines": {
+    "node": ">=18"
+  }
 }

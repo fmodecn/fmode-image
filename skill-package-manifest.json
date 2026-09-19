@@ -1,9 +1,14 @@
 {
   "name": "fmode-image",
-  "version": "1.0.0",
-  "description": "Fmode Image Generator",
-  "install": {
-    "claude-code": "npx fmode-image",
-    "hermes": "skill_view(name='fmode-image')"
+  "version": "2.0.0",
+  "type": "native",
+  "entry": "./skills/fmode-image/SKILL.md",
+  "requires": ["node>=18"],
+  "description": "AI架构图和场景插图生成器。6种模式，零依赖纯ESM，自动读API Key。",
+  "commands": {
+    "fmode-image": {
+      "description": "生成AI图像",
+      "args": "<mode> <prompt> [name]"
+    }
   }
 }
