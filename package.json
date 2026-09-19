@@ -1,6 +1,6 @@
 {
   "name": "fmode-image",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "description": "AI\u67b6\u6784\u56fe\u548c\u573a\u666f\u63d2\u56fe\u751f\u6210\u5668\u30026\u79cd\u6a21\u5f0f(--app/--arch/--scene/--slide)\uff0c\u81ea\u52a8\u8bfbAPI Key\uff0c\u96f6\u4f9d\u8d56\u7eafESM\u3002",
   "main": "./lib/fmode-image.mjs",
   "exports": {
