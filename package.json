@@ -1,0 +1,29 @@
+{
+  "name": "fmode-image",
+  "version": "1.0.0",
+  "description": "Fmode Image Generator: 架构图和场景插图生成器。自动读取API Key，支持AI架构图(1792x1024)和场景插图(1024x1024)双模式，纯白底PNG直接用于PPT。",
+  "type": "commonjs",
+  "bin": {
+    "fmode-image": "bin/fmode-image.js"
+  },
+  "files": [
+    ".claude-plugin/",
+    "bin/",
+    "scripts/",
+    "README.md",
+    "skill-package-manifest.json",
+    "skills/"
+  ],
+  "keywords": [
+    "claude-code",
+    "claude-skill",
+    "fmode",
+    "image",
+    "architecture",
+    "diagram",
+    "illustration",
+    "harness",
+    "ppt"
+  ],
+  "license": "MIT"
+}

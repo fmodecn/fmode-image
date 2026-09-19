@@ -1,0 +1,9 @@
+{
+  "name": "fmode-image",
+  "version": "1.0.0",
+  "description": "Fmode Image Generator",
+  "install": {
+    "claude-code": "npx fmode-image",
+    "hermes": "skill_view(name='fmode-image')"
+  }
+}
