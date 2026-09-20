@@ -1,7 +1,7 @@
 {
   "name": "fmode-image",
-  "version": "0.1.0",
-  "description": "AI\u67b6\u6784\u56fe\u548c\u573a\u666f\u63d2\u56fe\u751f\u6210\u5668\u30026\u79cd\u6a21\u5f0f(--app/--arch/--scene/--slide)\uff0c\u81ea\u52a8\u8bfbAPI Key\uff0c\u96f6\u4f9d\u8d56\u7eafESM\u3002",
+  "version": "0.2.0",
+  "description": "AI图像生成器。7种模式(--app/--arch/--explode/--product/--scene/--slide)，零依赖纯ESM，自动读API Key。",
   "main": "./lib/fmode-image.mjs",
   "exports": {
     ".": {
@@ -28,6 +28,9 @@
     "architecture",
     "diagram",
     "scene",
+    "product",
+    "design",
+    "explode",
     "presentation"
   ],
   "license": "MIT",
